@@ -63,7 +63,7 @@ diseqc_setup(int fe_fd, int lnb_num, int voltage, int band,
   if ((err = ioctl(fe_fd, FE_SET_VOLTAGE,
                     (i/2) % 2 ? SEC_VOLTAGE_18 : SEC_VOLTAGE_13)))
     return err;
-  msleep(15);
+  msleep(100);
 
   if (repeats == 0) { /* uncommited msg, wait 15ms, commited msg */
     if ((err = diseqc_send_msg(fe_fd, 0xE0, 0x10, 0x39, 0xF0 | j, 0, 0, 4)))
